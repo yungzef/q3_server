@@ -14,12 +14,13 @@ kotlin {
     val hostOs = System.getProperty("os.name")
     val arch = System.getProperty("os.arch")
     //jvm("native")
-    linuxArm64("native") {
-        binaries {
-            executable {
-                entryPoint = "main"
-            }
-        }
+
+    val nativeTarget = when {
+        hostOs == "Linux" && arch == "x86_64" -> linuxX64("native")
+        hostOs == "Linux" && arch == "aarch64" -> linuxArm64("native")
+        hostOs == "Mac OS X" && arch == "x86_64" -> jvm("native")
+        hostOs == "Mac OS X" && arch == "aarch64" -> jvm("native")
+        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
     sourceSets {
