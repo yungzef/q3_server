@@ -29,12 +29,6 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:2.3.4")
             }
         }
-        val nativeTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation("io.ktor:ktor-server-test-host:2.3.4")
-            }
-        }
     }
 }
 
