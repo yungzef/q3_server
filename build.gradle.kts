@@ -14,7 +14,7 @@ kotlin {
     val hostOs = System.getProperty("os.name")
     val arch = System.getProperty("os.arch")
     //jvm("native")
-    linuxX64("native") {
+    linuxArm64("native") {
         binaries {
             executable {
                 entryPoint = "main"
